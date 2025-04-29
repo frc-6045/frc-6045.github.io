@@ -1,0 +1,23 @@
+name: Create PR
+
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    name: A job to create a PR in a separate repo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Repo PR step
+        uses: ./ 
+        env:
+          GH_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+            source_directory: ./ 
+            destination_repo: '27johnhen.github.io'
+            destination_owner: '27johnhen'
+            destination_base_branch: final_branch_name
