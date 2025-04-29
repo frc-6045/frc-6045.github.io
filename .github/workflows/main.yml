@@ -1,5 +1,7 @@
 name: Create PR
 
+name: copy-to-pr
+
 on:
     push:
         branches: [ main ]
